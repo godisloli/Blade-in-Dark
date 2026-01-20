@@ -1,0 +1,74 @@
+# =========================
+
+# Unity generated folders
+
+# =========================
+
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+
+# =========================
+
+# Visual Studio / Rider
+
+# =========================
+
+.vs/
+.idea/
+*.csproj
+*.sln
+*.user
+*.suo
+*.tmp
+*.log
+
+# =========================
+
+# OS generated files
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# Unity meta cache (safe)
+
+# =========================
+
+*.pidb
+*.booproj
+*.svd
+
+# =========================
+
+# Crash reports
+
+# =========================
+
+sysinfo.txt
+
+# =========================
+
+# Addressables cache
+
+# =========================
+
+Assets/AddressableAssetsData/*/*.bin*
+Assets/AddressableAssetsData/*/*.json*
+
+# =========================
+
+# IL2CPP / Gradle
+
+# =========================
+
+.gradle/
+.gradleBuild/
+IL2CPP/
