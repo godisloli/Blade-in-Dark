@@ -30,7 +30,9 @@ public class CoinFlyToPlayer : MonoBehaviour
         // Safety auto-collect (in case trigger misses)
         if (Vector2.Distance(transform.position, player.position) <= collectDistance)
         {
-            SaveManager.Instance?.Data.player.AddCoins(1);
+            SaveManager.Instance.Data.player.AddCoins(1);
+            FindObjectOfType<LevelManager>()?.RegisterCoins(1);
+            GlobalSound.Instance?.PlaySFX(coinPicked);
             Object.Destroy(gameObject);
         }
     }

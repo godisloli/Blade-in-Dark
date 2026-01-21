@@ -16,6 +16,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 input;
 
+    // -----------------------------
+    // STAIRS
+    // -----------------------------
+    private bool onStairs = false;
+    private float stairSlope = 0.5f;
+    private int stairDirection = 1; // 1 = right is up, -1 = left is up
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -52,8 +59,16 @@ public class PlayerMovement : MonoBehaviour
     // -----------------------------
     void Move()
     {
+        Vector2 move = input;
+
+        // Apply stair illusion
+        if (onStairs && Mathf.Abs(input.x) > 0.01f)
+        {
+            move.y += input.x * stairSlope * stairDirection;
+        }
+
         rb.MovePosition(
-            rb.position + input * moveSpeed * moveMultiplier * Time.fixedDeltaTime
+            rb.position + move * moveSpeed * moveMultiplier * Time.fixedDeltaTime
         );
     }
 
@@ -66,11 +81,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // -----------------------------
-    // MOUSE FACING (PLAYER AS PIVOT)
+    // MOUSE FACING
     // -----------------------------
     void HandleFacing()
     {
-        // Lock facing during delay phase
         if (delay != null && delay.IsDelayActive())
             return;
 
@@ -89,5 +103,20 @@ public class PlayerMovement : MonoBehaviour
     public void SetMoveMultiplier(float value)
     {
         moveMultiplier = Mathf.Clamp(value, 0f, 1f);
+    }
+
+    // -----------------------------
+    // CALLED BY StairTrigger
+    // -----------------------------
+    public void EnterStairs(float slope, bool rightIsUp)
+    {
+        onStairs = true;
+        stairSlope = slope;
+        stairDirection = rightIsUp ? 1 : -1;
+    }
+
+    public void ExitStairs()
+    {
+        onStairs = false;
     }
 }
