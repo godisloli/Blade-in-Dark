@@ -17,7 +17,6 @@ public class LevelCompleteUI : MonoBehaviour
             return;
         }
 
-        levelText.text = $"LEVEL {result.levelId}";
         coinText.text = result.coinsGained.ToString();
         enemyText.text = result.enemiesKilled.ToString();
     }

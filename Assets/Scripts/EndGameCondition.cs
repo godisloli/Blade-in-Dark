@@ -26,16 +26,8 @@ public class EndGameZone : MonoBehaviour
 
         if (!other.CompareTag("Player"))
             return;
-
-        if (EnemyRegistry.AliveEnemies <= 0)
-        {
-            triggered = true;
-            TriggerEndGame();
-        }
-        else
-        {
-            ShowMessage();
-        }
+        triggered = true;
+        TriggerEndGame();
     }
 
     void TriggerEndGame()

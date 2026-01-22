@@ -4,7 +4,9 @@ public class Chest : MonoBehaviour
 {
     private Animator animator;
     public LootTable lootTable;
+    public AudioClip ChestOpen;
     private bool opened = false;
+    
 
     public void Awake()
     {
@@ -25,6 +27,7 @@ public class Chest : MonoBehaviour
     {
         opened = true;
         animator?.SetTrigger("Open");
+        GlobalSound.Instance?.PlaySFX(ChestOpen);
     }
 
     void SetOpened()

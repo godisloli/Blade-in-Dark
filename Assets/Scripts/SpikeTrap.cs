@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    bool active = true;
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        var entity = collision.gameObject.GetComponent<LivingEntity>();
+        if (active)
+        {
+            entity.Hurt(20);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetActive()
     {
-        
+        active = true;
+    }
+
+    public void SetDisable()
+    {
+        active = false;
     }
 }

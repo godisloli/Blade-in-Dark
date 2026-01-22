@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Camp.unity
     guid: 43af67e14f077a743bff2558cbd7980f
+  - enabled: 1
+    path: Assets/Scenes/LevelComplete.unity
+    guid: d7b24fb27a0987b46a0e64b2cb27e234
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
