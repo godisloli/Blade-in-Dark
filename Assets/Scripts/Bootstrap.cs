@@ -1,17 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Bootstrap : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(LoadMainMenuDelayed());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator LoadMainMenuDelayed()
     {
-        
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("MainMenu");
     }
 }

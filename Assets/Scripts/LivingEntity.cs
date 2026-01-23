@@ -8,6 +8,7 @@ public class LivingEntity : MonoBehaviour
     public bool isAlly = false;
     public bool isPlayer = false;
     private Ihurtable hurtableComponent;
+    public AudioClip hurtSound;
 
     private EntityStat entityStat;
     void Start()
@@ -20,6 +21,7 @@ public class LivingEntity : MonoBehaviour
     {
         if (!isDead())
         {
+            GlobalSound.Instance?.PlaySFX(hurtSound);
             entityStat.TakeDamage(damage);
             hurtableComponent?.OnHurt();
         }
@@ -30,6 +32,7 @@ public class LivingEntity : MonoBehaviour
     {
         if (!isDead())
         {
+            GlobalSound.Instance?.PlaySFX(hurtSound);
             entityStat.TakeDamage(damage);
             hurtableComponent?.OnHurt();
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -44,6 +47,7 @@ public class LivingEntity : MonoBehaviour
     {
         if (!isDead())
         {
+            GlobalSound.Instance?.PlaySFX(hurtSound);
             entityStat.TakeDamage(damage);
             hurtableComponent?.OnHurt();
             DelayPhaseController delayPhase = GetComponent<DelayPhaseController>();
@@ -58,6 +62,7 @@ public class LivingEntity : MonoBehaviour
     {
         if (!isDead())
         {
+            GlobalSound.Instance?.PlaySFX(hurtSound);
             entityStat.TakeDamage(damage);
             hurtableComponent?.OnHurt();
             Rigidbody2D rb = GetComponent<Rigidbody2D>();

@@ -1,11 +1,16 @@
+using System;
 using UnityEngine;
 
 public class EntityStat : MonoBehaviour
 {
+    public static event Action<EntityStat> OnEntityDied;
+    public bool isPlayer;
+
     [Header("Health")]
     public int maxHP = 100;
     public int currentHP;
     public Healthbar healthbar;
+    public AudioClip EntityDead;
 
     [Header("Combat")]
     public int attack = 10;
@@ -55,9 +60,11 @@ public class EntityStat : MonoBehaviour
     void Die()
     {
         isDead = true;
+        GlobalSound.Instance?.PlaySFX(EntityDead);
+        OnEntityDied?.Invoke(this);
         anim.SetBool("isDead", true);
         GetComponent<Lootable>()?.DropLoot();
-        Object.FindFirstObjectByType<LevelManager>()?.RegisterEnemyKill();
-        Object.Destroy(gameObject, 1f);
+        UnityEngine.Object.FindFirstObjectByType<LevelManager>()?.RegisterEnemyKill();
+        UnityEngine.Object.Destroy(gameObject, 1f);
     }
 }

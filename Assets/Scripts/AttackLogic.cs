@@ -5,6 +5,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Attack")]
     public float attackRange = 2.5f;
     public float attackAngle = 60f;
+    public AudioClip attackSFX;
 
     [Header("Delay Phase")]
     public float delayOnAttack = 0.25f;
@@ -167,7 +168,7 @@ public class PlayerAttack : MonoBehaviour
     void DoConeAttack()
     {
         Vector2 dir = GetMouseDirection();
-
+        GlobalSound.Instance?.PlaySFX(attackSFX);
         Collider2D[] hits =
             Physics2D.OverlapCircleAll(transform.position, attackRange);
 
