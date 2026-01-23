@@ -34,6 +34,7 @@ public class EndGameZone : MonoBehaviour
     {
         Object.FindFirstObjectByType<LevelManager>()?.CompleteLevel();
         SceneManager.LoadScene("LevelComplete");
+        GlobalSound.Instance?.StopBGM();
         GlobalSound.Instance?.PlaySFX(levelCompletedSound);
     }
 

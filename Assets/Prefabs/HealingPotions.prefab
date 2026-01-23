@@ -165,6 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd90e3ead2bedff4886de899fd24f73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealingPotion
-  healSound: {fileID: 0}
+  healSound: {fileID: 8300000, guid: 9b7f29f646685d041bc9d51c677caa7b, type: 3}
   amount: 20
   collectDistance: 0.2
